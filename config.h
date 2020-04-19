@@ -1,18 +1,19 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 10;        /* gap pixel between windows */
+static const unsigned int gappx     = 5;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "DejaVuSans:size=10" /*, "JoyPixels:pixelsize=10:antialias=true:autohint=true" */ };
+static const char *fonts[]          = { "DejaVuSans:size=10" /*, "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" */ };
 static const char dmenufont[]       = "DejaVuSans:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#4d4d4d";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -64,16 +65,18 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium")},
 	{ MODKEY,                       XK_m,      spawn,          SHCMD("kitty -e ncmpcpp")},
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("discord")},
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          SHCMD("kitty") },
+	{ MODKEY,			XK_p,	   spawn,	   SHCMD("mpc toggle") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	/*{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },*/
-	/*{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },*/
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	/*{ MODKEY,                       XK_Return, zoom,           {0} },*/
+	{ MODKEY,                       XK_t,  zoom,               {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,             		XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -97,6 +100,14 @@ static Key keys[] = {
 	TAGKEYS(                        0x5f,                      7)
 	TAGKEYS(                        0xe7,                      8)
 	{ MODKEY,	               XK_y,      quit,           {0} },
+	{0, XF86XK_AudioMute,		spawn,		SHCMD("amixer -q sset Master toggle; killall -USR1 dwmblocks") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("amixer -q sset Master 3%+; killall -USR1 dwmblocks") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("amixer -q sset Master 3%-; killall -USR1 dwmblocks") },
+	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("mpc prev") },
+	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("mpc next") },
+	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("mpc pause") },
+	{ 0, XF86XK_AudioPlay,		spawn,		SHCMD("mpc play") },
+	{ 0, XF86XK_AudioStop,		spawn,		SHCMD("mpc stop") },
 };
 
 /* button definitions */
