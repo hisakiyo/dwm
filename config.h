@@ -7,8 +7,8 @@ static const unsigned int gappx     = 5;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "DejaVuSans:size=10" /*, "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" */ };
-static const char dmenufont[]       = "DejaVuSans:size=10";
+static const char *fonts[]          = { "monospace:size=10" /*, "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" */ };
+static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -67,12 +67,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      spawn,          SHCMD("kitty -e ncmpcpp")},
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("discord")},
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("kitty -e newsboat") },
 	{ MODKEY,             		XK_Return, spawn,          SHCMD("kitty") },
 	{ MODKEY,			XK_p,	   spawn,	   SHCMD("mpc toggle") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY, 			XK_x,	   spawn,	   SHCMD("slock & xset dpms force off; mpc pause") },
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
