@@ -63,12 +63,12 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("chromium")},
-	{ MODKEY,                       XK_m,      spawn,          SHCMD("kitty -e ncmpcpp")},
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox")},
+	{ MODKEY,                       XK_m,      spawn,          SHCMD("st -e ncmpcpp")},
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("discord")},
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("kitty -e newsboat") },
-	{ MODKEY,             		XK_Return, spawn,          SHCMD("kitty") },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e newsboat") },
+	{ MODKEY,             		XK_Return, spawn,          SHCMD("st") },
 	{ MODKEY,			XK_p,	   spawn,	   SHCMD("mpc toggle") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
