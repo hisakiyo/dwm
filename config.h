@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -71,6 +71,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("discord")},
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("st -e newsboat") },
+	{ MODKEY,                       XK_r, 	   spawn,          SHCMD("st -e spt") },
 	{ MODKEY,             		XK_Return, spawn,          SHCMD("st") },
 	{ MODKEY,			XK_p,	   spawn,	   SHCMD("mpc toggle") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
